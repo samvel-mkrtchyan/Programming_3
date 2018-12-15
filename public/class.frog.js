@@ -1,11 +1,11 @@
-class Frog {
+class Frog extends LivingCreature{
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
+        super(x,y,index);
         this.directions = [];
         this.acted = false;
         this.energy = 100;
+        this.sumOfFrog = numberOfFrog;
+
 
     }
     getNewCoordinates() {
@@ -21,22 +21,9 @@ class Frog {
 
         ];
     }
-    chooseCell(num) {
+    chooseCell(character) {
         this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == num) {
-                    found.push([x, y]);
-                }
-                else if (matrix[y][x].index == num) {
-                    found.push([x, y]);
-                }
-            }
-        }
-        return found;
+        return super.chooseCell(character)
     }
     eat() {
         var newCell = random(this.chooseCell(4));
@@ -54,6 +41,9 @@ class Frog {
         else {
             this.move();
             this.fight();
+            // if (this.sumOfFrog == 1) {
+            //     matrix[this.x][this.y] = 0;
+            // }
         }
     }
     move() {
@@ -89,10 +79,15 @@ class Frog {
 
             if (matrix[oponentY][oponentX].energy > matrix[this.y][this.x].energy) {
                 matrix[this.y][this.x] = 0;
+                // this.sumOfFrog--;
+                // console.log(this.sumOfFrog);
 
             }
             else {
                 matrix[oponentY][oponentX] = 0;
+                // this.sumOfFrog--;
+                // numberOfFrog--;
+
             }
         }
     }
