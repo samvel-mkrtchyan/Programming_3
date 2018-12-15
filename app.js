@@ -12,9 +12,10 @@ app.get('/', function (req, res) {
 ///
 ///
 io.on('connection', function (socket) {
+  socket.emit("getNewMatrix", mtx);
+  
   socket.on("", function (data) { });
       /////
-  socket.emit("", data);
       /////
 });
 ////
@@ -22,4 +23,3 @@ io.on('connection', function (socket) {
 app.listen(3000, function(){
   console.log("Server started");
 });
-
