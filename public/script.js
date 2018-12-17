@@ -1,18 +1,21 @@
 var side = 10;
 
 var matrix = [];
-var n = 80;
-var m = 80;
+
+var socket;
 
 function setup() {
 
-    socket.on("getNewMatrix", function(mtx){
+    socket = io();
+
+    socket.on("getNewMatrix", function (mtx) {
         matrix = mtx;
+
+        frameRate(0);
+        createCanvas(matrix[0].length * side, matrix.length * side);
+        background('#acacac');
     });
 
-    frameRate(20);
-    createCanvas(matrix[0].length * side, matrix.length * side);
-    background('#acacac');
 }
 function draw() {
     background("#acacac");
@@ -31,9 +34,9 @@ function draw() {
                 else {
                     fill("yellow");
                 }
+
                 rect(x * side, y * side, side, side);
                 matrix[y][x].acted = false;
-
             }
             if (matrix[y][x].index == 3) {
                 if (matrix[y][x].infected == true) {

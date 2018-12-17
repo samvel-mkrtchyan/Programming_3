@@ -6,6 +6,8 @@ var Frog = require("./class.frog");
 
 var matrix = [];
 
+var m = n = 80;
+
 var NumberOfGrass = 50 * n * n / 100;
 var NumberOfHerbaceous = 5 * n * n / 100;
 var NumberOfPredator = 2 * n * n / 100;;
@@ -14,16 +16,12 @@ var numberOfFrog = 10;
 
 var score = 0;
 
-
-
 for (var y = 0; y < n; y++) {
     matrix[y] = [];
     for (var x = 0; x < m; x++) {
         matrix[y][x] = 0;
     }
 }
-console.log(matrix);
-
 
 function createCanvas(num, ind) {
     while (score < num) {
@@ -37,13 +35,12 @@ function createCanvas(num, ind) {
     }
     score = 0;
 }
+
 createCanvas(NumberOfGrass, 1);
 createCanvas(NumberOfHerbaceous, 2);
 createCanvas(NumberOfPredator, 3);
 createCanvas(NumberOfFly, 4);
 createCanvas(numberOfFrog, 5);
-
-
 
 for (var y = 0; y < matrix.length; y++) {
     for (var x = 0; x < matrix[y].length; x++) {
@@ -64,29 +61,5 @@ for (var y = 0; y < matrix.length; y++) {
         }
     }
 }
-console.log(matrix);
 
-
-setInterval(function(){
-    for (var y = 0; y < matrix.length; y++) {
-        for (var x = 0; x < matrix[y].length; x++) {
-            if (matrix[y][x].index == 1) {
-                matrix[y][x].mul();
-            }
-            else if (matrix[y][x].index == 2) {
-                matrix[y][x].eat();
-            }
-            else if (matrix[y][x].index == 3) {
-
-                matrix[y][x].eat();
-            }
-            else if (matrix[y][x].index == 4) {
-                matrix[y][x].infect();
-            }
-            else if (matrix[y][x].index == 5) {
-                matrix[y][x].eat();
-            }
-        }
-    }
-},200);
-
+module.exports = matrix;

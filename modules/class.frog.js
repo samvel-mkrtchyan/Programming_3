@@ -1,14 +1,11 @@
 var LivingCreature = require("./class.LivingCreature");
 
 module.exports = class Frog extends LivingCreature {
-    constructor(x, y, index) {
+    constructor(x, y, index, numberOfFrog) {
         super(x, y, index);
-        this.directions = [];
         this.acted = false;
         this.energy = 100;
         this.sumOfFrog = numberOfFrog;
-
-
     }
     getNewCoordinates() {
         this.directions = [
