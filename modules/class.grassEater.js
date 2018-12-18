@@ -21,12 +21,12 @@ module.exports = class GrassEater extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(character) {
+    chooseCell(character, matrix) {
         this.getNewCoordinates();
-        return super.chooseCell(character);
+        return super.chooseCell(character, matrix);
     }
-    move() {
-        var newCell = random(this.chooseCell(0));
+    move(matrix) {
+        var newCell = this.random(this.chooseCell(0, matrix));
         if (this.acted == false) {
             if (newCell) {
                 var newX = newCell[0];
@@ -43,13 +43,13 @@ module.exports = class GrassEater extends LivingCreature {
             }
             this.energy--;
             if (this.energy <= 0) {
-                this.die();
+                this.die(matrix);
             }
         }
 
     }
-    eat() {
-        var newCell = random(this.chooseCell(1));
+    eat(matrix) {
+        var newCell = this.random(this.chooseCell(1, matrix));
         if (newCell && this.infected == false) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -62,12 +62,12 @@ module.exports = class GrassEater extends LivingCreature {
 
             this.energy++;
             if (this.energy >= 20) {
-                this.mul();
+                this.mul(matrix);
             }
 
         }
         else {
-            this.move();
+            this.move(matrix);
             if (this.infected == true) {
                 this.infectivityDuration--;
                 if (this.infectivityDuration <= 0) {
@@ -78,8 +78,8 @@ module.exports = class GrassEater extends LivingCreature {
             }
         }
     }
-    mul() {
-        var newCell = random(this.chooseCell(0));
+    mul(matrix) {
+        var newCell = this.random(this.chooseCell(0, matrix));
 
         if (newCell) {
             var newX = newCell[0];
@@ -90,7 +90,7 @@ module.exports = class GrassEater extends LivingCreature {
 
         }
     }
-    die() {
+    die(matrix) {
         matrix[this.y][this.x] = 0;
 
     }

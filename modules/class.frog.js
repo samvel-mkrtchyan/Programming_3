@@ -20,12 +20,12 @@ module.exports = class Frog extends LivingCreature {
 
         ];
     }
-    chooseCell(character) {
+    chooseCell(character, matrix) {
         this.getNewCoordinates();
-        return super.chooseCell(character)
+        return super.chooseCell(character,matrix)
     }
-    eat() {
-        var newCell = random(this.chooseCell(4));
+    eat(matrix) {
+        var newCell = this.random(this.chooseCell(4,matrix));
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -38,14 +38,14 @@ module.exports = class Frog extends LivingCreature {
             this.energy++;
         }
         else {
-            this.move();
-            this.fight();
+            this.move(matrix);
+            this.fight(matrix);
             // if (this.sumOfFrog == 1) {
             //     matrix[this.x][this.y] = 0;
             // }
         }
     }
-    move() {
+    move(matrix) {
         if (this.acted == false) {
 
             var x = Math.floor(Math.random() * matrix[0].length);
@@ -68,8 +68,8 @@ module.exports = class Frog extends LivingCreature {
         }
 
     }
-    fight() {
-        var oponentCell = random(this.chooseCell(5));
+    fight(matrix) {
+        var oponentCell = this.random(this.chooseCell(5, matrix));
 
         if (oponentCell) {
             var oponentX = oponentCell[0];

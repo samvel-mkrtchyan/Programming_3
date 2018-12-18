@@ -39,13 +39,13 @@ module.exports = class Predator extends LivingCreature {
 
         ];
     }
-    chooseCell(character) {
+    chooseCell(character, matrix) {
         this.getNewCoordinates();
-        return super.chooseCell(character);
+        return super.chooseCell(character, matrix);
 
     }
-    eat() {
-        var newCell = random(this.chooseCell(2));
+    eat(matrix) {
+        var newCell = this.random(this.chooseCell(2, matrix));
         if (newCell && this.infected == false) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -58,12 +58,12 @@ module.exports = class Predator extends LivingCreature {
 
             this.energy++;
             if (this.energy >= 12) {
-                this.mul();
+                this.mul(matrix);
             }
 
         }
         else {
-            this.move();
+            this.move(matrix);
             if (this.infected == true) {
                 this.infectivityDuration--;
                 if (this.infectivityDuration <= 0) {
@@ -74,8 +74,8 @@ module.exports = class Predator extends LivingCreature {
             }
         }
     }
-    mul() {
-        var newCell = random(this.chooseCell(0));
+    mul(matrix) {
+        var newCell = this.random(this.chooseCell(0, matrix));
 
         if (newCell) {
             var newX = newCell[0];
@@ -86,8 +86,8 @@ module.exports = class Predator extends LivingCreature {
 
         }
     }
-    move() {
-        var newCell = random(this.chooseCell(0));
+    move(matrix) {
+        var newCell = this.random(this.chooseCell(0, matrix));
         if (this.acted == false) {
             if (newCell) {
                 var newX = newCell[0];
@@ -106,10 +106,10 @@ module.exports = class Predator extends LivingCreature {
         }
         this.energy--;
         if (this.energy <= 0) {
-            this.die();
+            this.die(matrix);
         }
     }
-    die() {
+    die(matrix) {
 
         matrix[this.y][this.x] = 0;
     }

@@ -13,6 +13,7 @@ function setup() {
         createCanvas(matrix[0].length * side, matrix.length * side);
         background('#acacac');
 
+        
         //HEO ANPAYMAN JNJEL
 
         for (var y = 0; y < matrix.length; y++) {
@@ -24,7 +25,7 @@ function setup() {
                 }
                 if (matrix[y][x].index == 2) {
                     if (matrix[y][x].infected == true) {
-                        fill("violet");
+                        fill("blue");
                     }
                     else {
                         fill("yellow");
@@ -35,7 +36,7 @@ function setup() {
                 }
                 if (matrix[y][x].index == 3) {
                     if (matrix[y][x].infected == true) {
-                        fill("violet");
+                        fill("blue");
                     }
                     else {
                         fill("red");
@@ -55,9 +56,16 @@ function setup() {
                 }
             }
         }
+
     });
+    noLoop();
+
 
 }
+function mousePressed() {
+    redraw();
+  }
+
 function draw() {
     background("#acacac");
 

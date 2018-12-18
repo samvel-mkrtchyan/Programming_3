@@ -17,7 +17,9 @@ console.log( matrix );
 
 io.on('connection', function (socket) {
   socket.emit("getNewMatrix", matrix);
+
 });
+
 var frameCount = 5;
 
 function frameRate(fc) {
@@ -32,19 +34,19 @@ function draw() {
       if (matrix[y][x].index == 1) {
         matrix[y][x].mul( matrix );
       }
-      /*else if (matrix[y][x].index == 2) {
-        matrix[y][x].eat();
+      else if (matrix[y][x].index == 2) {
+        matrix[y][x].eat(matrix);
       }
       else if (matrix[y][x].index == 3) {
 
-        matrix[y][x].eat();
+        matrix[y][x].eat(matrix);
       }
       else if (matrix[y][x].index == 4) {
-        matrix[y][x].infect();
+        matrix[y][x].infect(matrix);
       }
       else if (matrix[y][x].index == 5) {
-        matrix[y][x].eat();
-      }*/
+        matrix[y][x].eat(matrix);
+      }
     }
   }
 }

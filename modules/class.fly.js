@@ -19,14 +19,14 @@ module.exports = class Fly extends LivingCreature {
             [this.x + 1, this.y + 1]
         ];
     }
-    chooseCell(character) {
+    chooseCell(character, matrix) {
         this.getNewCoordinates();
-        return super.chooseCell(character)
+        return super.chooseCell(character, matrix)
 
 
     }
-    mul() {
-        var newCell = random(this.chooseCell(0));
+    mul(matrix) {
+        var newCell = this.random(this.chooseCell(0, matrix));
 
         if (newCell) {
             var newX = newCell[0];
@@ -37,8 +37,8 @@ module.exports = class Fly extends LivingCreature {
 
         }
     }
-    move() {
-        var newCell = random(this.chooseCell(0));
+    move(matrix) {
+        var newCell = this.random(this.chooseCell(0,matrix));
         if (this.acted == false) {
             if (newCell) {
                 var newX = newCell[0];
@@ -55,16 +55,16 @@ module.exports = class Fly extends LivingCreature {
             }
             this.energy--;
             if (this.energy <= 0) {
-                this.die();
+                this.die(matrix);
             }
         }
     }
-    infect() {
-        var erkusner = this.chooseCell(2);
-        var ereqner = this.chooseCell(3);
+    infect(matrix) {
+        var erkusner = this.chooseCell(2, matrix);
+        var ereqner = this.chooseCell(3, matrix);
         var yndhanur = erkusner.concat(ereqner);
 
-        var newCell = random(yndhanur);
+        var newCell = this.random(yndhanur);
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -75,16 +75,16 @@ module.exports = class Fly extends LivingCreature {
 
             this.energy++;
             if (this.energy >= 30) {
-                this.mul();
+                this.mul(matrix);
             }
 
         }
         else {
-            this.move();
+            this.move(matrix);
         }
 
     }
-    die() {
+    die(matrix) {
 
         matrix[this.y][this.x] = 0;
     }

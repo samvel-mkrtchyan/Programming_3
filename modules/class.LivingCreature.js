@@ -32,5 +32,9 @@ module.exports = class LivingCreature {
         }
         return found;
     }
+    random(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+    
 }
 
