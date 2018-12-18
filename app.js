@@ -49,6 +49,7 @@ function draw() {
       }
     }
   }
+
 }
 
 setInterval(draw, time);
