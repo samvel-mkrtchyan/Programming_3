@@ -12,8 +12,14 @@ function setup() {
         console.log(matrix);
         createCanvas(matrix[0].length * side, matrix.length * side);
         background('#acacac');
+        redraw()
+
+        socket.on("redraw", function (mtx) {
+            matrix = mtx;
+            redraw()
+        });
     });
-    
+
     noLoop();
 }
 
@@ -37,7 +43,6 @@ function draw() {
                 }
 
                 rect(x * side, y * side, side, side);
-                matrix[y][x].acted = false;
             }
             if (matrix[y][x].index == 3) {
                 if (matrix[y][x].infected == true) {
@@ -47,17 +52,16 @@ function draw() {
                     fill("red");
                 }
                 rect(x * side, y * side, side, side);
-                matrix[y][x].acted = false;
+                
             }
             if (matrix[y][x].index == 4) {
                 fill("violet");
                 rect(x * side, y * side, side, side);
-                matrix[y][x].acted = false;
+                
             }
             if (matrix[y][x].index == 5) {
                 fill("black");
                 rect(x * side, y * side, side, side);
-                matrix[y][x].acted = false;
             }
         }
     }

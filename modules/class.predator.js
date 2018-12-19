@@ -108,7 +108,10 @@ module.exports = class Predator extends LivingCreature {
         if (this.energy <= 0) {
             this.die(matrix);
         }
+    else this.acted = false; 
+    
     }
+
     die(matrix) {
 
         matrix[this.y][this.x] = 0;

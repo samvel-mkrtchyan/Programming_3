@@ -66,6 +66,7 @@ module.exports = class Frog extends LivingCreature {
             this.acted = true;
 
         }
+        else this.acted = false; 
 
     }
     fight(matrix) {

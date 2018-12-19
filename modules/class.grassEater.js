@@ -41,11 +41,15 @@ module.exports = class GrassEater extends LivingCreature {
 
 
             }
+            
+
             this.energy--;
             if (this.energy <= 0) {
                 this.die(matrix);
             }
+
         }
+        else this.acted = false; 
 
     }
     eat(matrix) {
@@ -68,6 +72,7 @@ module.exports = class GrassEater extends LivingCreature {
         }
         else {
             this.move(matrix);
+
             if (this.infected == true) {
                 this.infectivityDuration--;
                 if (this.infectivityDuration <= 0) {

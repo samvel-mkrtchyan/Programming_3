@@ -57,6 +57,8 @@ module.exports = class Fly extends LivingCreature {
             if (this.energy <= 0) {
                 this.die(matrix);
             }
+        else this.acted = false; 
+        
         }
     }
     infect(matrix) {
