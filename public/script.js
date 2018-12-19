@@ -10,7 +10,7 @@ function setup() {
     socket.on("getNewMatrix", function (mtx) {
         matrix = mtx;
         console.log(matrix);
-        createCanvas(matrix[0].length * side, matrix.length * side);
+        createCanvas(matrix[0].length * side + 80, matrix.length * side);
         background('#acacac');
         redraw()
 
