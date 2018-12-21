@@ -1,4 +1,6 @@
 var LivingCreature = require("./class.LivingCreature");
+var stat  = require("./statistic");
+
 
 module.exports = class Predator extends LivingCreature {
     constructor(x, y, index) {
@@ -55,8 +57,12 @@ module.exports = class Predator extends LivingCreature {
 
             this.x = newX;
             this.y = newY;
-
             this.energy++;
+
+            stat.grassEater.current--;
+            stat.grassEater.dead++;
+
+
             if (this.energy >= 12) {
                 this.mul(matrix);
             }
@@ -83,6 +89,9 @@ module.exports = class Predator extends LivingCreature {
 
             matrix[newY][newX] = new Predator(newX, newY, 3);
             this.energy = 6;
+
+            stat.predator.born++;
+            stat.predator.current++;
 
         }
     }

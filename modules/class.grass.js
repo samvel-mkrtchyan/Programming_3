@@ -1,5 +1,5 @@
 var LivingCreature = require("./class.LivingCreature");
-
+var stat  = require("./statistic");
 
 module.exports = class Grass extends LivingCreature {
     mul(matrix) {
@@ -12,6 +12,10 @@ module.exports = class Grass extends LivingCreature {
 
             matrix[newY][newX] = new Grass(newX, newY, 1);
             this.multiply = 0;
+            
+            
+            stat.grass.born++;
+            stat.grass.current++;
 
         }
     }

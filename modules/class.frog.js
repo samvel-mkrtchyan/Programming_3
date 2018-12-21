@@ -1,4 +1,5 @@
 var LivingCreature = require("./class.LivingCreature");
+var stat  = require("./statistic");
 
 module.exports = class Frog extends LivingCreature {
     constructor(x, y, index, numberOfFrog) {
@@ -36,6 +37,10 @@ module.exports = class Frog extends LivingCreature {
             this.x = newX;
             this.y = newY;
             this.energy++;
+
+            stat.fly.dead++;
+            stat.fly.current--;
+
         }
         else {
             this.move(matrix);
@@ -89,6 +94,9 @@ module.exports = class Frog extends LivingCreature {
                 // numberOfFrog--;
 
             }
+            stat.frog.dead++;
+            stat.frog.current--;
+
         }
     }
 }
