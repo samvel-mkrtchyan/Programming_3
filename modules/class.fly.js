@@ -94,6 +94,8 @@ module.exports = class Fly extends LivingCreature {
     die(matrix) {
 
         matrix[this.y][this.x] = 0;
+        stat.fly.dead++;
+        stat.fly.current--;
     }
 
 

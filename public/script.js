@@ -20,12 +20,12 @@ function setup() {
             redraw()
         });
 
-        socket.on("getStat",function(st){
+        socket.on("getStat", function (st) {
             stat = st;
         })
-     
+
     });
-   
+
     noLoop();
 }
 
@@ -71,7 +71,7 @@ function draw() {
             }
         }
     }
-    
+
     statistic(stat);
 }
 function statistic(st) {
@@ -101,6 +101,33 @@ function statistic(st) {
     rect(matrix[0].length * side + 80, 310, 20, 20);
 
     line(matrix[0].length * side + 220, 100, matrix[0].length * side + 220, 400);
+    line(matrix[0].length * side, 100, matrix[0].length * side, 400);
+    line(matrix[0].length * side, 100, matrix[0].length * side, 400);
+    line(matrix[0].length * side + 400, 100, matrix[0].length * side + 400, 400);
+    line(matrix[0].length * side + 580, 100, matrix[0].length * side + 580, 400);
 
-    //text(st.grass, matrix[0].length * side + 230, 130);
+    
+    text('Born', matrix[0].length * side + 230, 90);
+    text('Dead', matrix[0].length * side + 410, 90);
+    text('Current', matrix[0].length * side + 590, 90);
+
+
+    text(st.grass.born, matrix[0].length * side + 230, 130);
+    text(st.grassEater.born, matrix[0].length * side + 230, 180);
+    text(st.predator.born, matrix[0].length * side + 230, 230);
+    text(st.fly.born, matrix[0].length * side + 230, 280);
+    text(st.frog.born, matrix[0].length * side + 230, 330);
+
+    
+    text(st.grass.dead, matrix[0].length * side + 410, 130);
+    text(st.grassEater.dead, matrix[0].length * side + 410, 180);
+    text(st.predator.dead, matrix[0].length * side + 410, 230);
+    text(st.fly.dead, matrix[0].length * side + 410, 280);
+    text(st.frog.dead, matrix[0].length * side + 410, 330);
+
+    text(st.grass.current, matrix[0].length * side + 590, 130);
+    text(st.grassEater.current, matrix[0].length * side + 590, 180);
+    text(st.predator.current, matrix[0].length * side + 590, 230);
+    text(st.fly.current, matrix[0].length * side + 590, 280);
+    text(st.frog.current, matrix[0].length * side + 590, 330);
 }

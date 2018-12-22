@@ -1,12 +1,13 @@
 var LivingCreature = require("./class.LivingCreature");
-var stat  = require("./statistic");
+var stat = require("./statistic");
+// var mat = require("./matrix");
 
 module.exports = class Frog extends LivingCreature {
-    constructor(x, y, index, numberOfFrog) {
+    constructor(x, y, index) {
         super(x, y, index);
         this.acted = false;
         this.energy = 100;
-        this.sumOfFrog = numberOfFrog;
+        // this.sumOfFrog = mat.numberOfFrog;
     }
     getNewCoordinates() {
         this.directions = [
@@ -23,10 +24,10 @@ module.exports = class Frog extends LivingCreature {
     }
     chooseCell(character, matrix) {
         this.getNewCoordinates();
-        return super.chooseCell(character,matrix)
+        return super.chooseCell(character, matrix)
     }
     eat(matrix) {
-        var newCell = this.random(this.chooseCell(4,matrix));
+        var newCell = this.random(this.chooseCell(4, matrix));
         if (newCell) {
             var newX = newCell[0];
             var newY = newCell[1];
@@ -45,9 +46,11 @@ module.exports = class Frog extends LivingCreature {
         else {
             this.move(matrix);
             this.fight(matrix);
-            // if (this.sumOfFrog == 1) {
-            //     matrix[this.x][this.y] = 0;
-            // }
+            if (stat.frog.current == 1) {
+                matrix[this.x][this.y] = 0;
+                stat.frog.dead++;
+                stat.frog.current--;
+            }
         }
     }
     move(matrix) {
@@ -71,7 +74,7 @@ module.exports = class Frog extends LivingCreature {
             this.acted = true;
 
         }
-        else this.acted = false; 
+        else this.acted = false;
 
     }
     fight(matrix) {
@@ -84,14 +87,10 @@ module.exports = class Frog extends LivingCreature {
 
             if (matrix[oponentY][oponentX].energy > matrix[this.y][this.x].energy) {
                 matrix[this.y][this.x] = 0;
-                // this.sumOfFrog--;
-                // console.log(this.sumOfFrog);
 
             }
             else {
                 matrix[oponentY][oponentX] = 0;
-                // this.sumOfFrog--;
-                // numberOfFrog--;
 
             }
             stat.frog.dead++;

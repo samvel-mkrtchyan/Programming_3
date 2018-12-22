@@ -107,7 +107,8 @@ module.exports = class GrassEater extends LivingCreature {
     }
     die(matrix) {
         matrix[this.y][this.x] = 0;
-
+        stat.grassEater.current--;
+        stat.grassEater.dead++;
     }
 
 }
