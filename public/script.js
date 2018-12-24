@@ -15,14 +15,16 @@ function setup() {
         createCanvas(matrix[0].length * side + 1800, matrix.length * side);
         background('#acacac');
 
+        socket.on("getStat", function (st) {
+            stat = st;
+            return stat;
+        })
+        
         socket.on("redraw", function (mtx) {
-            matrix = mtx;
+            matrix = mtx;            
             redraw()
         });
 
-        socket.on("getStat", function (st) {
-            stat = st;
-        })
 
     });
 
@@ -111,23 +113,25 @@ function statistic(st) {
     text('Dead', matrix[0].length * side + 410, 90);
     text('Current', matrix[0].length * side + 590, 90);
 
+    if (st != undefined){
+        text(str(st.grass.born), matrix[0].length * side + 230, 130);
+        // text(st.grassEater.born, matrix[0].length * side + 230, 180);
+        // text(st.predator.born, matrix[0].length * side + 230, 230);
+        // text(st.fly.born, matrix[0].length * side + 230, 280);
+        // text(st.frog.born, matrix[0].length * side + 230, 330);
 
-    text(st.grass.born, matrix[0].length * side + 230, 130);
-    text(st.grassEater.born, matrix[0].length * side + 230, 180);
-    text(st.predator.born, matrix[0].length * side + 230, 230);
-    text(st.fly.born, matrix[0].length * side + 230, 280);
-    text(st.frog.born, matrix[0].length * side + 230, 330);
+    }
 
     
-    text(st.grass.dead, matrix[0].length * side + 410, 130);
-    text(st.grassEater.dead, matrix[0].length * side + 410, 180);
-    text(st.predator.dead, matrix[0].length * side + 410, 230);
-    text(st.fly.dead, matrix[0].length * side + 410, 280);
-    text(st.frog.dead, matrix[0].length * side + 410, 330);
+    // text(st.grass.dead, matrix[0].length * side + 410, 130);
+    // text(st.grassEater.dead, matrix[0].length * side + 410, 180);
+    // text(st.predator.dead, matrix[0].length * side + 410, 230);
+    // text(st.fly.dead, matrix[0].length * side + 410, 280);
+    // text(st.frog.dead, matrix[0].length * side + 410, 330);
 
-    text(st.grass.current, matrix[0].length * side + 590, 130);
-    text(st.grassEater.current, matrix[0].length * side + 590, 180);
-    text(st.predator.current, matrix[0].length * side + 590, 230);
-    text(st.fly.current, matrix[0].length * side + 590, 280);
-    text(st.frog.current, matrix[0].length * side + 590, 330);
+    // text(st.grass.current, matrix[0].length * side + 590, 130);
+    // text(st.grassEater.current, matrix[0].length * side + 590, 180);
+    // text(st.predator.current, matrix[0].length * side + 590, 230);
+    // text(st.fly.current, matrix[0].length * side + 590, 280);
+    // text(st.frog.current, matrix[0].length * side + 590, 330);
 }

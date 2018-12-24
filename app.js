@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
   res.redirect('index.html');
 });
 
-server.listen(3000);
+server.listen(3001);
 
 var matrix = require("./Modules/matrix");
 console.log(matrix);
@@ -50,14 +50,14 @@ io.on('connection', function (socket) {
   }, time);
   
   setInterval(function(){
-    socket.emit("getStat", stat); 
+
     var myJSON = JSON.stringify(stat);
     fs.writeFileSync("statistic.json", myJSON);
-
-  }, 3000);
+    socket.emit("getStat", stat); 
+  }, 1000);
 });
 
-  var frameCount = 5;
+  var frameCount = 10;
 
   function frameRate(fc) {
     return 1000 / fc;

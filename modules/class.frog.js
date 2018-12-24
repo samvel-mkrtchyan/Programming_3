@@ -48,6 +48,7 @@ module.exports = class Frog extends LivingCreature {
             this.fight(matrix);
             if (stat.frog.current == 1) {
                 matrix[this.x][this.y] = 0;
+                console.log("merav");
                 stat.frog.dead++;
                 stat.frog.current--;
             }
