@@ -71,7 +71,7 @@ module.exports = class GrassEater extends LivingCreature {
             stat.grass.current--;
             
 
-            if (this.energy >= 20) {
+            if (this.energy >= 12) {
                 this.mul(matrix);
             }
 

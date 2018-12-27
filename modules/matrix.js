@@ -13,9 +13,9 @@ var m = n = 80;
 
 var NumberOfGrass = 50 * n * n / 100;
 var NumberOfHerbaceous = 5 * n * n / 100;
-var NumberOfPredator = 3 * n * n / 100;
+var NumberOfPredator = 2.5 * n * n / 100;
 var NumberOfFly = 50;
-var numberOfFrog = 1;
+var numberOfFrog = 10;
 
 var score = 0;
 
