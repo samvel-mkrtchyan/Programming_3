@@ -35,7 +35,7 @@ io.on('connection', function (socket) {
         score = 0;
       }
     }
-    score+=4;
+    score+=2;
 
     for (var y = 0; y < matrix.length; y++) {
       for (var x = 0; x < matrix[y].length; x++) {
@@ -80,7 +80,7 @@ io.on('connection', function (socket) {
   }, 1000);
 });
 
-var frameCount = 10;
+var frameCount = 2;
 
 function frameRate(fc) {
   return 1000 / fc;

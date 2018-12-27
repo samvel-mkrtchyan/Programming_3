@@ -1,13 +1,11 @@
 var LivingCreature = require("./class.LivingCreature");
 var stat = require("./statistic");
-// var mat = require("./matrix");
 
 module.exports = class Frog extends LivingCreature {
     constructor(x, y, index) {
         super(x, y, index);
         this.acted = false;
         this.energy = 100;
-        // this.sumOfFrog = mat.numberOfFrog;
     }
     getNewCoordinates() {
         this.directions = [
@@ -46,11 +44,12 @@ module.exports = class Frog extends LivingCreature {
         else {
             this.move(matrix);
             this.fight(matrix);
+
             if (stat.frog.current == 1) {
-                matrix[this.x][this.y] = 0;
                 console.log("merav");
                 stat.frog.dead++;
                 stat.frog.current--;
+                matrix[this.x][this.y] = 0;
             }
         }
     }
@@ -99,4 +98,5 @@ module.exports = class Frog extends LivingCreature {
 
         }
     }
+  
 }

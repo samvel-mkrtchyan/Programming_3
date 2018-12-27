@@ -113,6 +113,8 @@ function statistic(st) {
     fill("pink")
     text('Fly', matrix[0].length * side + 10, 280);
     rect(matrix[0].length * side + 60, 260, 20, 20);
+    fill("blue");
+    rect(matrix[0].length * side + 85, 260, 20, 20)
     fill("black")
     text('Frog', matrix[0].length * side + 10, 330);
     rect(matrix[0].length * side + 80, 310, 20, 20);
@@ -144,6 +146,7 @@ function statistic(st) {
         text(st.fly.dead, matrix[0].length * side + 410, 280);
         text(st.frog.dead, matrix[0].length * side + 410, 330);
 
+        
         text(st.grass.current, matrix[0].length * side + 590, 130);
         text(st.grassEater.current, matrix[0].length * side + 590, 180);
         text(st.predator.current, matrix[0].length * side + 590, 230);

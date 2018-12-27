@@ -22,6 +22,7 @@ var score = 0;
 for (var y = 0; y < n; y++) {
     matrix[y] = [];
     for (var x = 0; x < m; x++) {
+        
         matrix[y][x] = 0;
     }
 }
